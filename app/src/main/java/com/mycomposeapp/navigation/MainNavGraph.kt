@@ -33,7 +33,7 @@ class RetrofitClass {
 
     fun test(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://dev.shoppinggate.app/api/v5/")
+            .baseUrl("xxx")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
