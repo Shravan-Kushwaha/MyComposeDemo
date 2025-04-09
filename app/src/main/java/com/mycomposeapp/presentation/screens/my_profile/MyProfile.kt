@@ -121,7 +121,7 @@ fun DrawerScreenList(navController: NavHostController) {
                                     call: Call<InitResponse>,
                                     response: Response<InitResponse>
                                 ) {
-                                    Log.e("TAG", "onResponse:${response.body()?.message} ")
+                                    Log.e("TAG", "onResponse:${response.body()}")
                                 }
 
                                 override fun onFailure(call: Call<InitResponse>, t: Throwable) {
