@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.shopping_gate.customer"
+    namespace = "com.customer"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.shopping_gate.customer"
+        applicationId = "com.customer"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
