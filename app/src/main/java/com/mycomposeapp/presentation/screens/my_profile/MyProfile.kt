@@ -125,7 +125,7 @@ fun DrawerScreenList(navController: NavHostController) {
                                 }
 
                                 override fun onFailure(call: Call<InitResponse>, t: Throwable) {
-                                    Log.e("TAG", "onFailure:${t.message} ")
+                                    Log.e("TAG", "onFailure:${t.message}")
                                 }
                             })
                         } // Takes up all available space
