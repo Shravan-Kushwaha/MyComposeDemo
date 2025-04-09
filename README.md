@@ -42,7 +42,53 @@ This project is organized in a layered architecture:
 - Jetpack ViewModel
 
 ---
+## 🛠 Hilt DI Module
+```kotlin
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
 
+    @Provides
+    fun provideBaseUrl() = "https://your.api.url/"
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(baseUrl: String): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    @Provides
+    fun provideAuthApi(retrofit: Retrofit): AuthApi =
+        retrofit.create(AuthApi::class.java)
+
+    @Provides
+    fun provideAuthRepository(api: AuthApi): AuthRepository =
+        AuthRepositoryImpl(api)
+}
+```
+## 🔌 Retrofit Setup
+
+```kotlin
+interface AuthApi {
+    @POST("auth/login")
+    suspend fun login(@Body request: LoginRequest): LoginResponse
+}
+```
+## 🗂 Repository Layer
+
+```kotlin
+
+class AuthRepositoryImpl @Inject constructor(
+    private val api: AuthApi
+) : AuthRepository {
+    override suspend fun login(email: String, password: String): LoginResult {
+        val response = api.login(LoginRequest(email, password))
+        return LoginResult(response.token, response.userId)
+    }
+}
+```
 ## 🧪 UI State Handling (Sealed Class)
 
 ```kotlin
@@ -76,53 +122,7 @@ class LoginViewModel @Inject constructor(
     }
 }
 ```
-## 🔌 Retrofit Setup
 
-```kotlin
-interface AuthApi {
-    @POST("auth/login")
-    suspend fun login(@Body request: LoginRequest): LoginResponse
-}
-```
-## 🗂 Repository Layer
-
-```kotlin
-
-class AuthRepositoryImpl @Inject constructor(
-    private val api: AuthApi
-) : AuthRepository {
-    override suspend fun login(email: String, password: String): LoginResult {
-        val response = api.login(LoginRequest(email, password))
-        return LoginResult(response.token, response.userId)
-    }
-}
-```
-## 🛠 Hilt DI Module
-```kotlin
-@Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
-
-    @Provides
-    fun provideBaseUrl() = "https://your.api.url/"
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(baseUrl: String): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-    @Provides
-    fun provideAuthApi(retrofit: Retrofit): AuthApi =
-        retrofit.create(AuthApi::class.java)
-
-    @Provides
-    fun provideAuthRepository(api: AuthApi): AuthRepository =
-        AuthRepositoryImpl(api)
-}
-```
 ## ▶️ Usage in Composable/Activity
 
 ```kotlin
