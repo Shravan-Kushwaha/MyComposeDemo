@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "342998998182",
+    "project_id": "shoppinggate-99fec",
+    "storage_bucket": "shoppinggate-99fec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342998998182:android:105147216bd00d87bc6867",
+        "android_client_info": {
+          "package_name": "com.shopping_gate.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6fKcHHQSqLtmOD_YOU0BIrWKRo1vKBTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342998998182:android:7c82ccee7c318ec3bc6867",
+        "android_client_info": {
+          "package_name": "com.shopping_gate.deliveryperson"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6fKcHHQSqLtmOD_YOU0BIrWKRo1vKBTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

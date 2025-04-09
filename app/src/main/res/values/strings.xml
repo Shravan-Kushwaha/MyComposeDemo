@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyComposeApp</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_profile">My Profile</string>
+    <string name="logout">Logout</string>
+    <string name="shravan_kumar">Shravan kumar</string>
+</resources>
